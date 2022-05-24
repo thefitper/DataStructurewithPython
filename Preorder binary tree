@@ -24,3 +24,26 @@ class Solution:
             if temp.right:
                 node = temp.right
         return res
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+#Recursive version
+
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        
+        res = []
+        
+        def recursive(rt):
+            if not rt:
+                return None
+            res.append(rt.val)
+            recursive(rt.left)
+            recursive(rt.right)
+            
+        recursive(root)
+        return res
