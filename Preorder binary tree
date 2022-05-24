@@ -1,0 +1,26 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+# https://www.tutorialspoint.com/binary-tree-preorder-traversal-in-python
+
+
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        #iteratively
+        res = []
+        st = []
+        node = root
+        while node or st:
+            while node:
+                if node.val != None:
+                    res.append(node.val)
+                st.append(node)
+                node = node.left
+            temp = st[-1]
+            st.pop()
+            if temp.right:
+                node = temp.right
+        return res
